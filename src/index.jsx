@@ -134,11 +134,11 @@ const SpringList = ({ row, onDragEnd, children }) => {
         setSprings(mapSpring());
       }
     } else {
-      const { scrollHeight } = animatedRef.current;
+      const { scrollHeight, scrollWidth } = animatedRef.current;
 
-      if (xySize !== scrollHeight) {
+      if (xySize !== scrollHeight || yxSize.current !== scrollWidth) {
         setXySize(scrollHeight);
-        yxSize.current = '100%';
+        yxSize.current = scrollWidth;
       } else {
         initSizeDone.current = true;
         setSprings(mapSpring());
