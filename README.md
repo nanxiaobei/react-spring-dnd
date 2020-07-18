@@ -23,12 +23,18 @@ npm i react-spring-dnd
 ```jsx
 import SpringList from 'react-spring-dnd';
 
-<SpringList>{['hello', 'react', 'spring', 'dnd', '👋⚛️🌀🕹']}</SpringList>;
+const App = () => (
+  <SpringList>
+    {'hello react spring dnd 👋⚛️🌀🦥'.split(' ').map((item) => (
+      <div key={item}>{item}</div>
+    ))}
+  </SpringList>
+);
 ```
 
 ## Try
 
-[Try a live demo](https://codesandbox.io/s/react-spring-dnd-bnzlu)
+[Try a live demo](https://codesandbox.io/s/react-spring-dnd-lnz70)
 
 ## API
 
