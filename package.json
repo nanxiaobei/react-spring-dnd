@@ -1,0 +1,48 @@
+{
+  "name": "react-spring-dnd",
+  "version": "0.0.1",
+  "description": "A deadly simple drag and drop solution using react-spring",
+  "keywords": [
+    "react",
+    "react-spring",
+    "react-beautiful-dnd",
+    "spring",
+    "drag",
+    "drop",
+    "dnd",
+    "dynamic"
+  ],
+  "main": "dist/react-spring-dnd.cjs.js",
+  "module": "dist/react-spring-dnd.esm.js",
+  "repository": "https://github.com/nanxiaobei/react-spring-dnd.git",
+  "author": "nanxiaobei <nanxiaobei@gmail.com>",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "rimraf dist && rollup -c"
+  },
+  "dependencies": {
+    "react-spring": "^8.0.27",
+    "react-use-gesture": "^7.0.15"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.7.2",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "eslint": "^7.4.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react-app": "^6.2.2",
+    "prettier": "^2.0.5",
+    "rollup": "^2.21.0",
+    "rollup-plugin-babel": "^4.4.0"
+  }
+}
