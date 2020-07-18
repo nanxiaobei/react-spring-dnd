@@ -34,16 +34,16 @@ const App = () => (
 
 ## Try
 
-[Try a basic demo](https://codesandbox.io/s/react-spring-dnd-lnz70?file=/src/App.js)
+[Try a basic demo →](https://codesandbox.io/s/react-spring-dnd-lnz70?file=/src/App.js)
 
-[Try a dynamic list demo](https://codesandbox.io/s/react-spring-dnd-dynamic-zbdk2?file=/src/App.js)
+[Try a dynamic list demo →](https://codesandbox.io/s/react-spring-dnd-dynamic-zbdk2?file=/src/App.js)
 
 ## API
 
 | Prop        | Type       | Default | Description                                                                                     |
 | ----------- | ---------- | ------- | ----------------------------------------------------------------------------------------------- |
 | `row`       | `boolean`  | `false` | Show list in column or row view, default column view                                            |
-| `onDragEnd` | `function` | -       | onDragEnd callback, `(order)=> void`                                                            |
+| `onDragEnd` | `function` | -       | onDragEnd callback, `(order)=> void` (see the above dynamic list demo for usage)                |
 | `children`  | `array`    | `[]`    | An array of draggable items (if item is jsx, must provide its unique `key`, don't use `index` ) |
 
 ## License
