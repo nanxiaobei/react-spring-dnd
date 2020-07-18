@@ -1,4 +1,4 @@
-# react-spring-dnd
+# react-spring-dnd 🕊
 
 A deadly simple drag and drop solution using react-spring
 
@@ -24,20 +24,20 @@ npm i react-spring-dnd
 ```jsx
 import SpringList from 'react-spring-dnd';
 
-const App = () => <SpringList> {'hello react spring dnd'.split(' ')}</SpringList>;
+<SpringList>{['hello', 'react', 'spring', 'dnd', '👋⚛️🌀🕹']}</SpringList>;
 ```
 
 ## Try
 
-[Play a live demo here → 🤳](https://codesandbox.io/s/react-spring-dnd-bnzlu)
+[Try a live demo](https://codesandbox.io/s/react-spring-dnd-bnzlu)
 
 ## API
 
-| Prop        | Type       | Default | Description                                          |
-| ----------- | ---------- | ------- | ---------------------------------------------------- |
-| `row`       | `boolean`  | `false` | Show list in column or row view, default column view |
-| `onDragEnd` | `function` | -       | onDragEnd callback, `(order)=> void`                 |
-| `children`  | `array`    | `[]`    | An array of draggable items                          |
+| Prop        | Type       | Default | Description                                                                                     |
+| ----------- | ---------- | ------- | ----------------------------------------------------------------------------------------------- |
+| `row`       | `boolean`  | `false` | Show list in column or row view, default column view                                            |
+| `onDragEnd` | `function` | -       | onDragEnd callback, `(order)=> void`                                                            |
+| `children`  | `array`    | `[]`    | An array of draggable items (if item is jsx, must provide its unique `key`, don't use `index` ) |
 
 ## License
 
