@@ -10,7 +10,7 @@ A deadly simple drag and drop solution using react-spring
 
 ---
 
-![](https://s3.jpg.cm/2020/07/19/U4WFh.gif)
+![](https://s3.jpg.cm/2020/07/19/U46bf.gif)
 
 [Play with this example!](https://lnz70.csb.app/)
 
