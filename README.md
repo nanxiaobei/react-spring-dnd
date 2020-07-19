@@ -8,6 +8,12 @@ A deadly simple drag and drop solution using react-spring
 [![npm peer dependency version](https://img.shields.io/npm/dependency-version/react-spring-dnd/peer/react?style=flat-square)](https://github.com/facebook/react)
 [![GitHub](https://img.shields.io/github/license/nanxiaobei/react-spring-dnd?style=flat-square)](https://github.com/nanxiaobei/react-spring-dnd/blob/master/LICENSE)
 
+---
+
+![](https://s3.jpg.cm/2020/07/19/U4WFh.gif)
+
+[Play with this example!](https://lnz70.csb.app/)
+
 ## Add
 
 ```shell script
