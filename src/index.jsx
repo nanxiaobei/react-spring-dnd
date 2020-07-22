@@ -189,7 +189,7 @@ SpringList.defaultProps = {
 
 SpringList.propTypes = {
   row: t.bool,
-  addType: t.oneOf(['insert', 'push']),
+  addType: t.oneOf(['push', 'insert']),
   onDragEnd: t.func,
   children: t.array,
 };
