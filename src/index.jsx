@@ -21,7 +21,7 @@ const move = (arr, from, to) => {
 /**
  * SpringList
  */
-const SpringList = ({ row, addInEnd, onDragEnd, children }) => {
+const SpringList = ({ row, addType, onDragEnd, children }) => {
   const axisKey = useRef(row ? 0 : 1);
 
   const xy = useRef(row ? 'width' : 'height');
@@ -47,7 +47,7 @@ const SpringList = ({ row, addInEnd, onDragEnd, children }) => {
   const mapSpring = useMemo(() => {
     if (children.length !== keyOrder.current.length) {
       if (children.length > keyOrder.current.length) {
-        if (addInEnd) {
+        if (addType === 'push') {
           keyOrder.current.push(getKey(children[children.length - 1]));
         } else {
           children.some((item, index) => {
@@ -92,7 +92,7 @@ const SpringList = ({ row, addInEnd, onDragEnd, children }) => {
         immediate: false,
       };
     };
-  }, [addInEnd, children, getKey, xySize]);
+  }, [addType, children, getKey, xySize]);
 
   const [springs, setSprings] = useSprings(children.length, mapSpring());
 
@@ -182,14 +182,14 @@ const SpringList = ({ row, addInEnd, onDragEnd, children }) => {
 
 SpringList.defaultProps = {
   row: false,
-  addInEnd: false,
+  addType: 'push',
   onDragEnd: undefined,
   children: [],
 };
 
 SpringList.propTypes = {
   row: t.bool,
-  addInEnd: t.bool,
+  addType: t.oneOf(['insert', 'push']),
   onDragEnd: t.func,
   children: t.array,
 };
