@@ -51,7 +51,7 @@ const App = () => (
 | `row`       | `boolean`  | `false`  | Show list in column or row view, default column view                         |
 | `addType`   | `string`   | `'push'` | how to add item to the list, `'push'` or `'insert'` (useful in dynamic list) |
 | `onDragEnd` | `function` | -        | `onDragEnd` callback, `(order) => void` (useful in dynamic list)             |
-| `children`  | `array`    | `[]`     | An array of draggable items                                                  |
+| `children`  | `array`    | `[]`     | An array of draggable items (if item is jsx, must provide its unique `key`)  |
 
 ## License
 
