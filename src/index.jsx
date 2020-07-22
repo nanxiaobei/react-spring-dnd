@@ -54,7 +54,7 @@ const SpringList = ({ row, onDragEnd, children }) => {
             const key = getKey(item);
             if (keyOrder.current.includes(key)) return false;
 
-            const btnKey = getKey(children[index - 1]);
+            const btnKey = index > 0 ? getKey(children[index - 1]) : 0;
             const btnIndex = keyOrder.current.indexOf(btnKey);
             keyOrder.current.splice(btnIndex + 1, 0, key);
             return true;
