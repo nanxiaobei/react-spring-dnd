@@ -16,10 +16,10 @@ const swap = (arr, from, to) => {
 };
 
 const SpringList = ({ row, onDragEnd, children }) => {
-  const meta = useMemo(() => {
+  const view = useMemo(() => {
     return row
-      ? { width: 'width', height: 'height', index: 0 }
-      : { width: 'height', height: 'width', index: 1 };
+      ? { width: 'width', height: 'height', index: 0, sizes: ['scrollWidth', 'scrollHeight'] }
+      : { width: 'height', height: 'width', index: 1, sizes: ['scrollHeight', 'scrollWidth'] };
   }, [row]);
 
   const [widthVal, setWidthVal] = useState(0);
@@ -35,27 +35,27 @@ const SpringList = ({ row, onDragEnd, children }) => {
         down && index === originalIndex
           ? {
               active: 'true',
-              [meta.width]: newWidth,
-              [meta.height]: 0,
+              [view.width]: newWidth,
+              [view.height]: 0,
               zIndex: 1,
-              immediate: (key) => key === 'active' || key === meta.width || key === 'zIndex',
+              immediate: (key) => key === 'active' || key === view.width || key === 'zIndex',
             }
           : {
               active: '',
-              [meta.width]: widthVal * orderList.indexOf(index),
-              [meta.height]: 0,
+              [view.width]: widthVal * orderList.indexOf(index),
+              [view.height]: 0,
               zIndex: 0,
               immediate: false,
             };
     },
-    [meta.height, meta.width, widthVal]
+    [view.height, view.width, widthVal]
   );
 
   const [springs, api] = useSprings(children.length, mapSprings());
 
   const bind = useGesture({
     onDrag({ args: [originalIndex], down, movement }) {
-      const offset = movement[meta.index];
+      const offset = movement[view.index];
       if (offset === 0) return;
 
       const curIndex = order.current.indexOf(originalIndex);
@@ -71,29 +71,24 @@ const SpringList = ({ row, onDragEnd, children }) => {
     },
   });
 
-  const hasResized = useRef(false);
   useLayoutEffect(() => {
-    if (hasResized.current) return;
-
-    const { scrollWidth, scrollHeight } = animatedDiv.current;
-    const [newWidth, newHeight] = row ? [scrollWidth, scrollHeight] : [scrollHeight, scrollWidth];
+    const [newWidth, newHeight] = view.sizes.map((key) => animatedDiv.current[key]);
 
     if (widthVal !== newWidth || heightVal !== newHeight) {
       setWidthVal(newWidth);
       setHeightVal(newHeight);
     } else {
-      hasResized.current = true;
       api.start(mapSprings());
     }
-  }, [api, heightVal, mapSprings, row, widthVal]);
+  }, [api, heightVal, mapSprings, view.sizes, widthVal]);
 
   return (
     <div
       className="spring-list"
       style={{
         position: 'relative',
-        [meta.width]: widthVal * children.length,
-        [meta.height]: heightVal,
+        [view.width]: widthVal * children.length,
+        [view.height]: heightVal,
       }}
     >
       {springs.map(({ active, width, height, zIndex }, index) => {
