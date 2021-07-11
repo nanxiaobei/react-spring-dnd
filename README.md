@@ -46,7 +46,7 @@ const App = () => (
 
 | Prop        | Type       | Default | Description                             |
 | ----------- | ---------- | ------- | --------------------------------------- |
-| `row`       | `boolean`  | `false` | If show as row                          |
+| `row`       | `boolean`  | `false` | Display as row                          |
 | `onDragEnd` | `function` | -       | `onDragEnd` callback, `(order) => void` |
 | `children`  | `array`    | `[]`    | Draggable items                         |
 
