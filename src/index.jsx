@@ -1,178 +1,116 @@
-import React, { useState, useMemo, useRef, useLayoutEffect } from 'react';
+import React, { useState, useMemo, useRef, useLayoutEffect, useCallback } from 'react';
 import t from 'prop-types';
-import { useSprings, animated, interpolate } from 'react-spring';
+import { useSprings, animated, to } from 'react-spring';
 import { useGesture } from 'react-use-gesture';
 
-/**
- * utils
- */
 const clamp = (pos, low, high) => {
-  const mid = pos <= high ? pos : high;
-  return mid >= low ? mid : low;
+  const mid = Math.max(pos, low);
+  return Math.min(mid, high);
 };
 
-const move = (arr, from, to) => {
+const swap = (arr, from, to) => {
   const copy = [...arr];
-  const out = copy.splice(from, 1)[0];
-  copy.splice(to, 0, out);
+  const [index] = copy.splice(from, 1);
+  copy.splice(to, 0, index);
   return copy;
 };
 
-/**
- * SpringList
- */
-const SpringList = ({ row, addType, onDragEnd, children }) => {
-  const axisKey = useRef(row ? 0 : 1);
+const SpringList = ({ row, onDragEnd, children }) => {
+  const meta = useMemo(() => {
+    return row
+      ? { width: 'width', height: 'height', index: 0 }
+      : { width: 'height', height: 'width', index: 1 };
+  }, [row]);
 
-  const xy = useRef(row ? 'width' : 'height');
-  const yx = useRef(row ? 'height' : 'width'); // another attr
-  const [xySize, setXySize] = useState(0);
-  const yxSize = useRef(0); // another val
+  const [widthVal, setWidthVal] = useState(0);
+  const [heightVal, setHeightVal] = useState(0);
 
-  const animatedRef = useRef(null);
-  const hasKey = useRef(children[0]?.key !== undefined);
-  const getKey = useMemo(() => (item) => (hasKey.current ? item.key : item), []);
-  const keyOrder = useRef(children.map((item) => getKey(item)));
+  const animatedDiv = useRef(null);
+  const order = useRef();
+  if (!order.current) order.current = children.map((_, index) => index);
 
-  const onDragEndCb = useMemo(() => {
-    if (typeof onDragEnd === 'function') {
-      return { onDragEnd: () => onDragEnd(keyOrder.current) };
-    }
-    return undefined;
-  }, [onDragEnd]);
+  const mapSprings = useCallback(
+    (orderList = order.current, down, originalIndex, newWidth) => {
+      return (index) =>
+        down && index === originalIndex
+          ? {
+              active: 'true',
+              [meta.width]: newWidth,
+              [meta.height]: 0,
+              zIndex: 1,
+              immediate: (key) => key === 'active' || key === meta.width || key === 'zIndex',
+            }
+          : {
+              active: '',
+              [meta.width]: widthVal * orderList.indexOf(index),
+              [meta.height]: 0,
+              zIndex: 0,
+              immediate: false,
+            };
+    },
+    [meta.height, meta.width, widthVal]
+  );
 
-  /**
-   * useSprings
-   */
-  const mapSpring = useMemo(() => {
-    if (children.length !== keyOrder.current.length) {
-      if (children.length > keyOrder.current.length) {
-        if (addType === 'push') {
-          keyOrder.current.push(getKey(children[children.length - 1]));
-        } else {
-          children.some((item, index) => {
-            const key = getKey(item);
-            if (keyOrder.current.includes(key)) return false;
+  const [springs, api] = useSprings(children.length, mapSprings());
 
-            const btnKey = index > 0 ? getKey(children[index - 1]) : 0;
-            const btnIndex = keyOrder.current.indexOf(btnKey);
-            keyOrder.current.splice(btnIndex + 1, 0, key);
-            return true;
-          });
-        }
-      } else {
-        const newKeys = children.map((item) => getKey(item));
-        keyOrder.current.some((key, index) => {
-          if (newKeys.includes(key)) return false;
-
-          keyOrder.current.splice(index, 1);
-          return true;
-        });
-      }
-    }
-
-    return (keyList = keyOrder.current, down, activeKey, activePos) => (index) => {
-      const key = getKey(children[index]);
-
-      if (down && key === activeKey) {
-        return {
-          active: 'true',
-          [xy.current]: activePos,
-          [yx.current]: 0,
-          zIndex: 1,
-          immediate: (n) => n === 'active' || n === xy.current || n === 'zIndex',
-        };
-      }
-
-      return {
-        active: '',
-        [xy.current]: xySize * keyList.indexOf(key),
-        [yx.current]: 0,
-        zIndex: 0,
-        immediate: false,
-      };
-    };
-  }, [addType, children, getKey, xySize]);
-
-  const [springs, setSprings] = useSprings(children.length, mapSpring());
-
-  /**
-   * useGesture
-   */
   const bind = useGesture({
-    onDrag({ args: [activeKey], down, movement }) {
-      const offset = movement[axisKey.current];
+    onDrag({ args: [originalIndex], down, movement }) {
+      const offset = movement[meta.index];
       if (offset === 0) return;
 
-      const prev = keyOrder.current.indexOf(activeKey);
-      const activePos = xySize * prev + offset;
-      const next = clamp(Math.round(activePos / xySize), 0, children.length - 1);
-      const newOrder = move(keyOrder.current, prev, next);
+      const curIndex = order.current.indexOf(originalIndex);
+      const newWidth = widthVal * curIndex + offset;
+      const nextIndex = clamp(Math.round(newWidth / widthVal), 0, children.length - 1);
+      const newOrder = swap(order.current, curIndex, nextIndex);
 
-      setSprings(mapSpring(newOrder, down, activeKey, activePos));
-      if (!down) keyOrder.current = newOrder;
+      api.start(mapSprings(newOrder, down, originalIndex, newWidth));
+      if (!down) order.current = newOrder;
     },
-    ...onDragEndCb,
+    onDragEnd() {
+      onDragEnd?.(order.current);
+    },
   });
 
-  /**
-   * useLayoutEffect
-   */
-  const initSizeDone = useRef(false);
+  const hasResized = useRef(false);
   useLayoutEffect(() => {
-    if (initSizeDone.current) return;
-    if (!animatedRef.current) return;
+    if (hasResized.current) return;
 
-    if (row) {
-      const { scrollWidth, scrollHeight } = animatedRef.current;
+    const { scrollWidth, scrollHeight } = animatedDiv.current;
+    const [newWidth, newHeight] = row ? [scrollWidth, scrollHeight] : [scrollHeight, scrollWidth];
 
-      if (xySize !== scrollWidth || yxSize.current !== scrollHeight) {
-        setXySize(scrollWidth);
-        yxSize.current = scrollHeight;
-      } else {
-        initSizeDone.current = true;
-        setSprings(mapSpring());
-      }
+    if (widthVal !== newWidth || heightVal !== newHeight) {
+      setWidthVal(newWidth);
+      setHeightVal(newHeight);
     } else {
-      const { scrollHeight, scrollWidth } = animatedRef.current;
-
-      if (xySize !== scrollHeight || yxSize.current !== scrollWidth) {
-        setXySize(scrollHeight);
-        yxSize.current = scrollWidth;
-      } else {
-        initSizeDone.current = true;
-        setSprings(mapSpring());
-      }
+      hasResized.current = true;
+      api.start(mapSprings());
     }
-  }, [mapSpring, row, setSprings, xySize]);
+  }, [api, heightVal, mapSprings, row, widthVal]);
 
   return (
     <div
       className="spring-list"
       style={{
         position: 'relative',
-        [xy.current]: xySize * children.length,
-        [yx.current]: yxSize.current,
+        [meta.width]: widthVal * children.length,
+        [meta.height]: heightVal,
       }}
     >
       {springs.map(({ active, width, height, zIndex }, index) => {
-        const item = children[index];
-        const key = getKey(item);
-
         return (
           <animated.div
-            {...bind(key)}
-            ref={animatedRef}
-            key={key}
-            className="animated-item"
-            data-active={active.interpolate((s) => s)}
+            ref={animatedDiv}
+            className="spring-item"
+            data-active={active.to((s) => s)}
+            {...bind(index)}
+            key={index}
             style={{
               position: 'absolute',
               zIndex,
-              transform: interpolate([width, height], (x, y) => `translate3d(${x}px, ${y}px, 0)`),
+              transform: to([width, height], (x, y) => `translate3d(${x}px, ${y}px, 0)`),
             }}
           >
-            {item}
+            {children[index]}
           </animated.div>
         );
       })}
@@ -182,14 +120,12 @@ const SpringList = ({ row, addType, onDragEnd, children }) => {
 
 SpringList.defaultProps = {
   row: false,
-  addType: 'push',
   onDragEnd: undefined,
   children: [],
 };
 
 SpringList.propTypes = {
   row: t.bool,
-  addType: t.oneOf(['push', 'insert']),
   onDragEnd: t.func,
   children: t.array,
 };
