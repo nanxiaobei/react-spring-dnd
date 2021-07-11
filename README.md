@@ -16,7 +16,7 @@ A deadly simple drag and drop solution using react-spring
 
 ## Add
 
-```shell script
+```shell
 yarn add react-spring-dnd
 
 # or
@@ -40,18 +40,15 @@ const App = () => (
 
 ## Try
 
-[Try a basic demo →](https://codesandbox.io/s/react-spring-dnd-lnz70?file=/src/App.js)
-
-[Try a dynamic list demo →](https://codesandbox.io/s/react-spring-dnd-dynamic-zbdk2?file=/src/App.js)
+[Live demo →](https://codesandbox.io/s/react-spring-dnd-lnz70?file=/src/App.js)
 
 ## API
 
-| Prop        | Type       | Default  | Description                                                                    |
-| ----------- | ---------- | -------- | ------------------------------------------------------------------------------ |
-| `row`       | `boolean`  | `false`  | Show list in column or row view, default column view                           |
-| `addType`   | `string`   | `'push'` | how to add item to the list, `'push'` or `'insert'` (useful in a dynamic list) |
-| `onDragEnd` | `function` | -        | `onDragEnd` callback, `(order) => void` (useful in a dynamic list)             |
-| `children`  | `array`    | `[]`     | An array of draggable items (if item is jsx, must provide its unique `key`)    |
+| Prop        | Type       | Default | Description                             |
+| ----------- | ---------- | ------- | --------------------------------------- |
+| `row`       | `boolean`  | `false` | If show as row                          |
+| `onDragEnd` | `function` | -       | `onDragEnd` callback, `(order) => void` |
+| `children`  | `array`    | `[]`    | Draggable items                         |
 
 ## License
 
