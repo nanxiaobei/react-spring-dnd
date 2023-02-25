@@ -6,25 +6,21 @@ A deadly simple drag and drop solution using react-spring
 [![npm](https://img.shields.io/npm/dt/react-spring-dnd?style=flat-square)](https://www.npmtrends.com/react-spring-dnd)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/react-spring-dnd?style=flat-square)](https://bundlephobia.com/result?p=react-spring-dnd)
 [![npm peer dependency version](https://img.shields.io/npm/dependency-version/react-spring-dnd/peer/react?style=flat-square)](https://github.com/facebook/react)
-[![GitHub](https://img.shields.io/github/license/nanxiaobei/react-spring-dnd?style=flat-square)](https://github.com/nanxiaobei/react-spring-dnd/blob/master/LICENSE)
+[![GitHub](https://img.shields.io/github/license/nanxiaobei/react-spring-dnd?style=flat-square)](https://github.com/nanxiaobei/react-spring-dnd/blob/main/LICENSE)
 
 ---
 
-![](https://s3.jpg.cm/2020/07/19/U46bf.gif)
-
-[Play with this example!](https://lnz70.csb.app/)
-
-## Add
+## Install
 
 ```shell
-yarn add react-spring-dnd
-
+pnpm add react-spring-dnd
 # or
-
+yarn add react-spring-dnd
+# or
 npm i react-spring-dnd
 ```
 
-## Use
+## Usage
 
 ```jsx
 import SpringList from 'react-spring-dnd';
@@ -38,9 +34,7 @@ const App = () => (
 );
 ```
 
-## Try
-
-[Live demo →](https://codesandbox.io/s/react-spring-dnd-lnz70?file=/src/App.js)
+[![Edit react-spring-dnd](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-spring-dnd-lnz70?fontsize=14&hidenavigation=1&theme=dark)
 
 ## API
 
@@ -52,4 +46,10 @@ const App = () => (
 
 ## License
 
-[MIT License](https://github.com/nanxiaobei/react-spring-dnd/blob/master/LICENSE) © [nanxiaobei](https://mrlee.me/)
+[MIT License](https://github.com/nanxiaobei/react-spring-dnd/blob/main/LICENSE) © [nanxiaobei](https://lee.so/)
+
+## FUTAKE
+
+Try [**FUTAKE**](https://sotake.com/futake) in WeChat. A mini app for your inspiration moments. 🌈
+
+![FUTAKE](https://s3.bmp.ovh/imgs/2022/07/21/452dd47aeb790abd.png)
