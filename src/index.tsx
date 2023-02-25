@@ -1,7 +1,7 @@
 import { useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
-import { animated, to, useSprings } from 'react-spring';
-import { useGesture } from 'react-use-gesture';
+import { animated, to, useSprings } from '@react-spring/web';
+import { useGesture } from '@use-gesture/react';
 
 const clamp = (pos: number, low: number, high: number) => {
   const mid = Math.max(pos, low);
@@ -80,7 +80,7 @@ const SpringList = (props: SpringListProps) => {
   const [springs, api] = useSprings(children.length, mapSprings());
 
   const bind = useGesture({
-    onDrag({ args: [originalIndex], down, movement }) {
+    onDrag: ({ args: [originalIndex], down, movement }) => {
       const offset = movement[view.index];
       if (offset === 0) {
         return;
@@ -100,7 +100,7 @@ const SpringList = (props: SpringListProps) => {
         order.current = newOrder;
       }
     },
-    onDragEnd() {
+    onDragEnd: () => {
       onDragEnd?.(order.current);
     },
   });
@@ -149,6 +149,7 @@ const SpringList = (props: SpringListProps) => {
                 [width, height],
                 (x, y) => `translate3d(${x}px, ${y}px, 0)`
               ),
+              touchAction: 'none',
             }}
           >
             {children[index]}
