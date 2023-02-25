@@ -1,11 +1,13 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@react-spring/web': ^9.7.0
   '@rollup/plugin-typescript': ^11.0.0
   '@trivago/prettier-plugin-sort-imports': ^4.1.1
   '@types/node': ^18.14.1
   '@types/react': ^18.0.28
   '@types/react-dom': ^18.0.11
+  '@use-gesture/react': ^10.2.24
   '@vitejs/plugin-react': ^3.1.0
   eslint: ^8.34.0
   eslint-config-prettier: ^8.6.0
@@ -13,16 +15,14 @@ specifiers:
   prettier: ^2.8.4
   react: ^18.2.0
   react-dom: ^18.2.0
-  react-spring: ^9.7.0
-  react-use-gesture: ^9.1.3
   rollup: ^3.17.3
-  rollup-plugin-dts: ^5.2.0
+  rollup-plugin-dts-bundle-generator: ^1.4.0
   typescript: ^4.9.5
   vite: ^4.1.4
 
 dependencies:
-  react-spring: 9.7.0_biqbaboplfbrettd7655fr4n2y
-  react-use-gesture: 9.1.3_react@18.2.0
+  '@react-spring/web': 9.7.0_biqbaboplfbrettd7655fr4n2y
+  '@use-gesture/react': 10.2.24_react@18.2.0
 
 devDependencies:
   '@rollup/plugin-typescript': 11.0.0_5h3uv6h5hdci4akcbsseut5pjq
@@ -38,7 +38,7 @@ devDependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   rollup: 3.17.3
-  rollup-plugin-dts: 5.2.0_5h3uv6h5hdci4akcbsseut5pjq
+  rollup-plugin-dts-bundle-generator: 1.4.0
   typescript: 4.9.5
   vite: 4.1.4_@types+node@18.14.1
 
@@ -1761,33 +1761,6 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@react-spring/konva/9.7.0_react@18.2.0:
-    resolution: {integrity: sha512-T+kDItYZx6SZXwxSFyV5uQHxgBhGJ8qUPcaHliHP8F3Z12CFcy7uAR9rXw9yqOwRdCRBTelZYU8tZIJwFmNrWQ==}
-    peerDependencies:
-      konva: '>=2.6'
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-konva: ^16.8.0 || ^16.8.7-0 || ^16.9.0-0 || ^16.10.1-0 || ^16.12.0-0 || ^16.13.0-0 || ^17.0.0-0 || ^17.0.1-0 || ^17.0.2-0 || ^18.0.0-0
-    dependencies:
-      '@react-spring/animated': 9.7.0_react@18.2.0
-      '@react-spring/core': 9.7.0_react@18.2.0
-      '@react-spring/shared': 9.7.0_react@18.2.0
-      '@react-spring/types': 9.7.0
-      react: 18.2.0
-    dev: false
-
-  /@react-spring/native/9.7.0_react@18.2.0:
-    resolution: {integrity: sha512-eMhE3QSNYR1g79Fl27bdIjPAOv20GxHX3dAx0XmFwvrGC5RILEEbV2VcXh22IeNIXME3sxqI7h1MW36p0mxOqQ==}
-    peerDependencies:
-      react: ^16.8.0  || >=17.0.0 || >=18.0.0
-      react-native: '>=0.58'
-    dependencies:
-      '@react-spring/animated': 9.7.0_react@18.2.0
-      '@react-spring/core': 9.7.0_react@18.2.0
-      '@react-spring/shared': 9.7.0_react@18.2.0
-      '@react-spring/types': 9.7.0
-      react: 18.2.0
-    dev: false
-
   /@react-spring/rafz/9.7.0:
     resolution: {integrity: sha512-ooEWZyWBQ9leY0SEn2oc2Kq/93DiIwpbbQQwNlFBpJAjib201vxh2TgZi/9WPnsBm+qHzk7LXzVhHIBvoOwTcQ==}
     dev: false
@@ -1802,20 +1775,6 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@react-spring/three/9.7.0_react@18.2.0:
-    resolution: {integrity: sha512-oWTBukeBYAgi4S3F8p2J89s0ykDFX4SPTCjy4vZrfj7kSbaxN07OJdkreraofzW8HXgj7uGCNAu/bjRt6JMfMg==}
-    peerDependencies:
-      '@react-three/fiber': '>=6.0'
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      three: '>=0.126'
-    dependencies:
-      '@react-spring/animated': 9.7.0_react@18.2.0
-      '@react-spring/core': 9.7.0_react@18.2.0
-      '@react-spring/shared': 9.7.0_react@18.2.0
-      '@react-spring/types': 9.7.0
-      react: 18.2.0
-    dev: false
-
   /@react-spring/types/9.7.0:
     resolution: {integrity: sha512-YEmhgtV7b6cNErxgYtlFpd/7N1EKV4IvxWjvLP3WVXi4xBhvBW7a3MCoHXzeTGbdWVK/YLnDh7BgJ542DwLZvg==}
     dev: false
@@ -1825,22 +1784,6 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      '@react-spring/animated': 9.7.0_react@18.2.0
-      '@react-spring/core': 9.7.0_react@18.2.0
-      '@react-spring/shared': 9.7.0_react@18.2.0
-      '@react-spring/types': 9.7.0
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    dev: false
-
-  /@react-spring/zdog/9.7.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-fz7vbB/U92yPKqM9X9/LyL4d8ElVS8NVbhqZI7jC1UVN0eI4ewECP76Dnx5bqv01++IO+PhV1AD35B9kAkvtpA==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-zdog: '>=1.0'
-      zdog: '>=1.0'
     dependencies:
       '@react-spring/animated': 9.7.0_react@18.2.0
       '@react-spring/core': 9.7.0_react@18.2.0
@@ -2096,6 +2039,19 @@ packages:
       '@typescript-eslint/types': 5.53.0
       eslint-visitor-keys: 3.3.0
     dev: true
+
+  /@use-gesture/core/10.2.24:
+    resolution: {integrity: sha512-ZL7F9mgOn3Qlnp6QLI9jaOfcvqrx6JPE/BkdVSd8imveaFTm/a3udoO6f5Us/1XtqnL4347PsIiK6AtCvMHk2Q==}
+    dev: false
+
+  /@use-gesture/react/10.2.24_react@18.2.0:
+    resolution: {integrity: sha512-rAZ8Nnpu1g4eFzqCPlaq+TppJpMy0dTpYOQx5KpfoBF4P3aWnCqwj7eKxcmdIb1NJKpIJj50DPugUH4mq5cpBg==}
+    peerDependencies:
+      react: '>= 16.8.0'
+    dependencies:
+      '@use-gesture/core': 10.2.24
+      react: 18.2.0
+    dev: false
 
   /@vitejs/plugin-react/3.1.0_vite@4.1.4:
     resolution: {integrity: sha512-AfgcRL8ZBhAlc3BFdigClmTUMISmmzHn7sB2h9U1odvc5U/MjWXsAaz18b/WoppUTDBzxOJwo2VdClfUcItu9g==}
@@ -2366,6 +2322,15 @@ packages:
       supports-color: 7.2.0
     dev: true
 
+  /cliui/8.0.1:
+    resolution: {integrity: sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==}
+    engines: {node: '>=12'}
+    dependencies:
+      string-width: 4.2.3
+      strip-ansi: 6.0.1
+      wrap-ansi: 7.0.0
+    dev: true
+
   /color-convert/1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
     dependencies:
@@ -2511,8 +2476,21 @@ packages:
       esutils: 2.0.3
     dev: true
 
+  /dts-bundle-generator/7.2.0:
+    resolution: {integrity: sha512-pHjRo52hvvLDRijzIYRTS9eJR7vAOs3gd/7jx+7YVnLU8ay3yPUWGtHXPtuMBSlJYk/s4nq1SvXObDCZVguYMg==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
+    dependencies:
+      typescript: 4.9.5
+      yargs: 17.7.1
+    dev: true
+
   /electron-to-chromium/1.4.311:
     resolution: {integrity: sha512-RoDlZufvrtr2Nx3Yx5MB8jX3aHIxm8nRWPJm3yVvyHmyKaRvn90RjzB6hNnt0AkhS3IInJdyRfQb4mWhPvUjVw==}
+    dev: true
+
+  /emoji-regex/8.0.0:
+    resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
     dev: true
 
   /emoji-regex/9.2.2:
@@ -3098,6 +3076,11 @@ packages:
     engines: {node: '>=6.9.0'}
     dev: true
 
+  /get-caller-file/2.0.5:
+    resolution: {integrity: sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==}
+    engines: {node: 6.* || 8.* || >= 10.*}
+    dev: true
+
   /get-intrinsic/1.2.0:
     resolution: {integrity: sha512-L049y6nFOuom5wGyRc3/gdTLO94dySVKRACj1RmJZBQXlbTMhtNIgkWkUHq+jYmZvKf14EW1EoJnnjbmoHij0Q==}
     dependencies:
@@ -3317,6 +3300,11 @@ packages:
   /is-extglob/2.1.1:
     resolution: {integrity: sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /is-fullwidth-code-point/3.0.0:
+    resolution: {integrity: sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg==}
+    engines: {node: '>=8'}
     dev: true
 
   /is-glob/4.0.3:
@@ -3544,13 +3532,6 @@ packages:
 
   /magic-string/0.27.0:
     resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}
-    engines: {node: '>=12'}
-    dependencies:
-      '@jridgewell/sourcemap-codec': 1.4.14
-    dev: true
-
-  /magic-string/0.29.0:
-    resolution: {integrity: sha512-WcfidHrDjMY+eLjlU+8OvwREqHwpgCeKVBUpQ3OhYYuvfaYCUgcbuBzappNzZvg/v8onU3oQj+BYpkOJe9Iw4Q==}
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.14
@@ -3808,39 +3789,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /react-spring/9.7.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-KeF56ly+y0NUJcsAb1yRgq1toyUun8laLoZTKZixb3b6waO9lZyFaIZiNJEM6a8D+6j0uuDxGFEXeEgfH/4PmA==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      '@react-spring/core': 9.7.0_react@18.2.0
-      '@react-spring/konva': 9.7.0_react@18.2.0
-      '@react-spring/native': 9.7.0_react@18.2.0
-      '@react-spring/three': 9.7.0_react@18.2.0
-      '@react-spring/web': 9.7.0_biqbaboplfbrettd7655fr4n2y
-      '@react-spring/zdog': 9.7.0_biqbaboplfbrettd7655fr4n2y
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    transitivePeerDependencies:
-      - '@react-three/fiber'
-      - konva
-      - react-konva
-      - react-native
-      - react-zdog
-      - three
-      - zdog
-    dev: false
-
-  /react-use-gesture/9.1.3_react@18.2.0:
-    resolution: {integrity: sha512-CdqA2SmS/fj3kkS2W8ZU8wjTbVBAIwDWaRprX7OKaj7HlGwBasGEFggmk5qNklknqk9zK/h8D355bEJFTpqEMg==}
-    deprecated: This package is no longer maintained. Please use @use-gesture/react instead
-    peerDependencies:
-      react: '>= 16.8.0'
-    dependencies:
-      react: 18.2.0
-    dev: false
-
   /react/18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
     engines: {node: '>=0.10.0'}
@@ -3901,6 +3849,11 @@ packages:
       jsesc: 0.5.0
     dev: true
 
+  /require-directory/2.1.1:
+    resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
+    engines: {node: '>=0.10.0'}
+    dev: true
+
   /resolve-from/4.0.0:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==}
     engines: {node: '>=4'}
@@ -3936,18 +3889,19 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup-plugin-dts/5.2.0_5h3uv6h5hdci4akcbsseut5pjq:
-    resolution: {integrity: sha512-B68T/haEu2MKcz4kNUhXB8/h5sq4gpplHAJIYNHbh8cp4ZkvzDvNca/11KQdFrB9ZeKucegQIotzo5T0JUtM8w==}
-    engines: {node: '>=v14'}
-    peerDependencies:
-      rollup: ^3.0.0
-      typescript: ^4.1
+  /rollup-plugin-dts-bundle-generator/1.4.0:
+    resolution: {integrity: sha512-++Vax6N0iFiH6/hqbKvdnVvyz48grMqAos6TqW4wajQE0AgDzbQK0hbsyDgKTTQoz1BjanC0omOJc/RnQoYajQ==}
     dependencies:
-      magic-string: 0.29.0
-      rollup: 3.17.3
-      typescript: 4.9.5
+      dts-bundle-generator: 7.2.0
+      rollup: 2.79.1
+    dev: true
+
+  /rollup/2.79.1:
+    resolution: {integrity: sha512-uKxbd0IhMZOhjAiD5oAFp7BqvkA4Dv47qpOCtaNvng4HBwdbWtdOh8f5nZNuk2rp51PMGk3bzfWu5oayNEuYnw==}
+    engines: {node: '>=10.0.0'}
+    hasBin: true
     optionalDependencies:
-      '@babel/code-frame': 7.18.6
+      fsevents: 2.3.2
     dev: true
 
   /rollup/3.17.3:
@@ -4034,6 +3988,15 @@ packages:
 
   /string-natural-compare/3.0.1:
     resolution: {integrity: sha512-n3sPwynL1nwKi3WJ6AIsClwBMa0zTi54fn2oLU6ndfTSIO05xaznjSf15PcBZU6FNWbmN5Q6cxT4V5hGvB4taw==}
+    dev: true
+
+  /string-width/4.2.3:
+    resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
+    engines: {node: '>=8'}
+    dependencies:
+      emoji-regex: 8.0.0
+      is-fullwidth-code-point: 3.0.0
+      strip-ansi: 6.0.1
     dev: true
 
   /string.prototype.matchall/4.0.8:
@@ -4293,8 +4256,22 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /wrap-ansi/7.0.0:
+    resolution: {integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==}
+    engines: {node: '>=10'}
+    dependencies:
+      ansi-styles: 4.3.0
+      string-width: 4.2.3
+      strip-ansi: 6.0.1
+    dev: true
+
   /wrappy/1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
+    dev: true
+
+  /y18n/5.0.8:
+    resolution: {integrity: sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==}
+    engines: {node: '>=10'}
     dev: true
 
   /yallist/3.1.1:
@@ -4308,6 +4285,24 @@ packages:
   /yaml/1.10.2:
     resolution: {integrity: sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==}
     engines: {node: '>= 6'}
+    dev: true
+
+  /yargs-parser/21.1.1:
+    resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
+    engines: {node: '>=12'}
+    dev: true
+
+  /yargs/17.7.1:
+    resolution: {integrity: sha512-cwiTb08Xuv5fqF4AovYacTFNxk62th7LKJ6BL9IGUpTJrWoU7/7WdQGTP2SjKf1dUNBGzDd28p/Yfs/GI6JrLw==}
+    engines: {node: '>=12'}
+    dependencies:
+      cliui: 8.0.1
+      escalade: 3.1.1
+      get-caller-file: 2.0.5
+      require-directory: 2.1.1
+      string-width: 4.2.3
+      y18n: 5.0.8
+      yargs-parser: 21.1.1
     dev: true
 
   /yocto-queue/0.1.0:
