@@ -25,13 +25,15 @@ npm i react-spring-dnd
 ```jsx
 import SpringList from 'react-spring-dnd';
 
-const App = () => (
-  <SpringList>
-    {'hello react spring dnd 👋⚛️🌀🦥'.split(' ').map((item) => (
-      <div key={item}>{item}</div>
-    ))}
-  </SpringList>
-);
+const App = () => {
+  return (
+    <SpringList>
+      {'hello react spring dnd 👋⚛️🌀🦥'.split(' ').map((item) => (
+        <div key={item}>{item}</div>
+      ))}
+    </SpringList>
+  );
+};
 ```
 
 [![Edit react-spring-dnd](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-spring-dnd-lnz70?fontsize=14&hidenavigation=1&theme=dark)
