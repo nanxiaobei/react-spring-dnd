@@ -10,6 +10,10 @@ A deadly simple drag and drop solution using react-spring
 
 ---
 
+## Play
+
+[![Edit react-spring-dnd](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-spring-dnd-lnz70?fontsize=14&hidenavigation=1&theme=dark&file=/src/App.jsx)
+
 ## Install
 
 ```shell
@@ -36,15 +40,13 @@ const App = () => {
 };
 ```
 
-[![Edit react-spring-dnd](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-spring-dnd-lnz70?fontsize=14&hidenavigation=1&theme=dark)
-
 ## API
 
-| Prop        | Type       | Default | Description                             |
-| ----------- | ---------- | ------- | --------------------------------------- |
-| `row`       | `boolean`  | `false` | Display as row                          |
-| `onDragEnd` | `function` | -       | `onDragEnd` callback, `(order) => void` |
-| `children`  | `array`    | `[]`    | Draggable items                         |
+| Prop        | Type       | Default | Description                                 |
+| ----------- | ---------- | ------- | ------------------------------------------- |
+| `row`       | `boolean`  | `false` | Display as row                              |
+| `onDragEnd` | `function` | -       | `onDragEnd` callback, `(orderList) => void` |
+| `children`  | `array`    | `[]`    | Draggable items                             |
 
 ## License
 
