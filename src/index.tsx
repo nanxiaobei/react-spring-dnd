@@ -17,7 +17,7 @@ const swap = (arr: number[], a: number, b: number) => {
 
 export type SpringListProps = {
   row?: boolean;
-  onDragEnd?: (orderArr: number[]) => void;
+  onDragEnd?: (orderList: number[]) => void;
   children: ReactNode[];
 };
 
